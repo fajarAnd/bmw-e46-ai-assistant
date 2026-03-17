@@ -63,17 +63,24 @@ Yang harus dicek:
 - Part terkait lain yang belum pernah diganti dan mungkin jadi penyebab
 
 #### Langkah 3: Riset Forum (untuk masalah kompleks)
-Cari di forum E46 Fanatics untuk pattern common failure N42.
+Cari di dua sumber forum sekaligus: E46 Fanatics (teknis global) dan SerayaMotor (konteks Indonesia).
 
-**Cara login:**
-1. Baca file `.env` untuk mendapatkan credential (E46_FANATICS_USERNAME dan E46_FANATICS_PASSWORD)
-2. Gunakan MCP chrome-devtools untuk navigate dan login
+**Step 3a — Search via WebSearch (primary, tanpa login):**
 
-**Cara search:**
-- Advanced search internal: `https://www.e46fanatics.com/search/?t=post`
-- Google search: `[keyword] N42 site:e46fanatics.com`
-- Bandingkan minimal 3 thread
-- Identifikasi pola common failure yang berulang
+Jalankan **dua query paralel**:
+1. E46 Fanatics — teknis & diagnosis: `[keyword] N42 site:e46fanatics.com` dengan `allowed_domains: ["e46fanatics.com"]`
+2. SerayaMotor — konteks Indonesia: `[keyword] BMW E46 site:serayamotor.com` dengan `allowed_domains: ["serayamotor.com"]`
+
+SerayaMotor berguna khusus untuk: harga part lokal Indonesia, rekomendasi bengkel spesialis BMW, dan masalah spesifik kondisi jalan/iklim tropis.
+
+WebSearch mengembalikan judul thread, URL, dan snippet. Bandingkan minimal 3 thread per sumber, identifikasi pola yang berulang.
+
+> **Catatan**: WebFetch langsung ke URL kedua forum diblokir (e46fanatics: 406/409, serayamotor: 403). Gunakan WebSearch sebagai primary tool.
+
+**Step 3b — Fallback ke MCP chrome-devtools (hanya jika snippet tidak cukup):**
+- Kapan: masalah sangat kompleks, butuh prosedur repair step-by-step lengkap dari dalam thread
+- Login e46fanatics: Baca `.env` untuk credential (E46_FANATICS_USERNAME & E46_FANATICS_PASSWORD), navigate via chrome-devtools
+- Advanced search: `https://www.e46fanatics.com/search/?t=post`
 
 #### Langkah 4: Lookup Part Number OEM
 Gunakan RealOEM untuk cari part number yang benar:
@@ -289,9 +296,16 @@ Panduan komunikasi dengan mekanik. Baca `references/mechanic-guide.md` untuk tem
 
 ### E46 Fanatics Forum
 - URL: `https://www.e46fanatics.com`
-- Login credentials ada di file `.env` (E46_FANATICS_USERNAME, E46_FANATICS_PASSWORD)
-- Advanced search: `https://www.e46fanatics.com/search/?t=post`
-- Google search: `[keyword] site:e46fanatics.com`
+- Primary: WebSearch dengan `allowed_domains: ["e46fanatics.com"]`, query: `[keyword] N42 site:e46fanatics.com`
+- Fallback (perlu konten penuh): Login via chrome-devtools, credentials di `.env` (E46_FANATICS_USERNAME, E46_FANATICS_PASSWORD)
+- Advanced search internal: `https://www.e46fanatics.com/search/?t=post`
+- Fokus: teknis diagnosis, failure pattern, prosedur repair
+
+### SerayaMotor Forum (Indonesia)
+- URL: `https://www.serayamotor.com/diskusi/`
+- Primary: WebSearch dengan `allowed_domains: ["serayamotor.com"]`, query: `[keyword] BMW E46 site:serayamotor.com`
+- WebFetch diblokir (403) — gunakan WebSearch saja
+- Fokus: konteks Indonesia — harga part lokal, bengkel spesialis BMW, pengalaman pemilik lokal
 
 ### Scanner — THINKCAR THINKSAFE
 - OBD2 Full Mode (10 mode standar)

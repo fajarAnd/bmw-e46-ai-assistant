@@ -158,7 +158,7 @@ Letakkan prompt analisis di folder `input/`, lalu jalankan:
 
 ## Filosofi
 
-- **Service dulu, ganti belakangan** — penggantian part hanya jika sudah tidak bisa diperbaiki
+- **Pragmatic solusi** — penggantian part hanya jika sudah tidak bisa diperbaiki
 - **N42-specific** — semua analisis spesifik untuk mesin N42, bukan generic OBD2
 - **Budget-conscious** — evaluasi price-quality ratio, harga aktual dari Tokopedia JABODETABEK
 - **Mechanic-ready** — setiap rekomendasi dilengkapi panduan komunikasi ke mekanik
