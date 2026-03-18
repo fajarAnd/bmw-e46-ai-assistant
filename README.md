@@ -44,24 +44,33 @@ Panduan komunikasi dengan mekanik: kalimat yang bisa langsung diucapkan, pertany
 
 ```
 bmw-e46-ai-assistant/
+├── data/
+│   ├── service-history/
+│   │   └── riwayat-service.csv          # Riwayat service kendaraan
+│   └── references/
+│       ├── rute-mudik-kuningan.pdf      # Peta rute mudik
+│       └── load-test-aki.jpg            # Hasil load test aki
+├── prompts/
+│   ├── analisis-mudik.md                # Prompt analisis perjalanan
+│   ├── analisis-aki-ban-template.md     # Template prompt analisis aki & ban
+│   └── scan-result.txt                  # Hasil scan THINKCAR
+├── docs/
+│   ├── analysis/
+│   │   ├── analisis-mudik-2026.md       # Analisis kesiapan mudik
+│   │   ├── analisis-aki-ban-mudik-2026.md  # Analisis aki & ban
+│   │   └── persiapan-mudik-final-2026.md   # Checklist final
+│   └── procedures/
+│       └── prosedur-ganti-aki-e46.md    # Panduan ganti aki
 ├── .claude/
 │   └── skills/
 │       └── bmw/
-│           ├── SKILL.md                  # Definisi skill /bmw
+│           ├── SKILL.md                 # Definisi skill /bmw
 │           └── references/
-│               ├── n42-failures.md       # Database common failure N42
-│               └── mechanic-guide.md     # Panduan komunikasi mekanik
-├── Source/
-│   └── Riwayat Detail Service.csv        # Riwayat service kendaraan
-├── input/
-│   ├── raw.md                            # Project standard & referensi
-│   ├── prompt-mudik.md                   # Contoh prompt analisis perjalanan
-│   └── scan.txt                          # Output scan THINKCAR (raw)
-├── output/
-│   └── analisis-mudik-2026.md            # Hasil analisis kesiapan mudik
+│               ├── n42-failures.md      # Common failure N42
+│               └── mechanic-guide.md    # Panduan komunikasi mekanik
 ├── .env                                  # Credentials (tidak di-commit)
 ├── .env.example                          # Template credentials
-└── .gitignore
+└── README.md
 ```
 
 ---
@@ -127,9 +136,9 @@ claude
 ```
 
 ### Analisis kesiapan perjalanan jauh
-Letakkan prompt analisis di folder `input/`, lalu jalankan:
+Letakkan prompt analisis di folder `prompts/`, lalu jalankan:
 ```
-/bmw diagnose [lihat file input/prompt-mudik.md]
+/bmw diagnose [lihat file prompts/analisis-mudik.md]
 ```
 
 ---
